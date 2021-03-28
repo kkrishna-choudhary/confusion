@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 
 
-import { Card, CardImg, CardImgOverlay, CardText, CardBody,  CardTitle } from 'reactstrap';
+import { Card, CardImg, CardImgOverlay,   CardTitle } from 'reactstrap';
+import DishDetails from './DishDetails';
 
 class Menu extends Component {
 
@@ -20,14 +21,9 @@ class Menu extends Component {
     renderDish(dish) {
         if (dish != null)
             return(
-                <Card>
-                    <CardImg top src={dish.image} alt={dish.name} />
-                    <CardBody>
-                      <CardTitle>{dish.name}</CardTitle>
-                      <CardText>{dish.description}</CardText>
-                    </CardBody>
-                </Card>
+                <DishDetails sDish={this.state.selectedDish}></DishDetails>
             );
+            
         else
             return(
                 <div></div>
@@ -55,9 +51,9 @@ class Menu extends Component {
                     {menu}
                 </div>
                 <div className="row">
-                  <div  className="col-12 col-md-5 m-1">
+                  
                     {this.renderDish(this.state.selectedDish)}
-                  </div>
+                 
                 </div>
             </div>
         );
